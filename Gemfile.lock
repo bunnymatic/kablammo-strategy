@@ -17,7 +17,7 @@ GEM
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
     redis (3.0.4)
-    redis_message_capsule (0.8.2)
+    redis_message_capsule (0.8.3)
       json
       redis
     rerun (0.8.1)
@@ -30,5 +30,5 @@ DEPENDENCIES
   execjs (= 1.4.0)
   multi_json
   oj
-  redis_message_capsule
+  redis_message_capsule (~> 0.8.3)
   rerun
