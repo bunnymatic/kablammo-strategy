@@ -6,7 +6,7 @@ module Aggressive
     target_y = (@battle.board.width - 1)/2
 
     puts "(%f, %f) => (%f, %f)" % [x,y,target_x, target_y]
-    return first_possible_move 'e'
+    return first_possible_move 'n'
 
     moves = ''
     moves << case (target_y <=> y)
@@ -34,7 +34,6 @@ module Aggressive
   end
 
   def hunt
-    puts 'hunting'
     x, y = robot.x, robot.y
     return first_possible_move 'nesw' if x == 0
     return first_possible_move 'eswn' if y == @battle.board.height - 1
@@ -64,15 +63,14 @@ module Aggressive
 
     if enemy
       if !(aiming_at? enemy)
-        puts 'aim'
         return aim_at! enemy
       end
       if can_fire_at? enemy
-        puts 'fire'
         return fire_at! enemy
       end
     end
     puts 'no enemy to be seen'
+    return rest unless robot.ammo > 0
     move_to_center || hunt
   end
 end
