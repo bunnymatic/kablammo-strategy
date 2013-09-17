@@ -5,14 +5,14 @@ module Aggressive
     ew = (@battle.board.width - 1)/2 - x
     ns = (@battle.board.height - 1)/2 - y
 
-    methods = []
-    methods << (ew < 0) ? 'move_east!' : 'move_west!' unless ew == 0
-    methods << (ns < 0) ? 'move_north!' : 'move_south!' unless ns == 0
-    methods.compact!
-    if methods.length > 0
-      methods.reverse if rand() < 0.5
-      puts "MOVE #{methods.first}"
-      return send methods.first
+    movements = []
+    movements << (ew < 0) ? 'move_east!' : 'move_west!' unless ew == 0
+    movements << (ns < 0) ? 'move_north!' : 'move_south!' unless ns == 0
+    movements.compact!
+    if movements.length > 0
+      movements.reverse if rand() < 0.5
+      puts "MOVE #{movements.first}"
+      return send(movements.first)
     end
     nil
   end
