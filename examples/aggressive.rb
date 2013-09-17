@@ -5,10 +5,9 @@ module Aggressive
     ew = ((@battle.board.width - 1)/2 - x).to_i
     ns = ((@battle.board.height - 1)/2 - y).to_i
 
-    puts ns, ew
     movements = []
-    movements << ((ew < 0) ? 'move_east!' : 'move_west!') unless ew == 0
-    movements << ((ns < 0) ? 'move_north!' : 'move_south!') unless ns == 0
+    movements << ((ew < 0) ? 'move_west!' : 'move_east!') unless ew == 0
+    movements << ((ns < 0) ? 'move_south!' : 'move_north!') unless ns == 0
     movements.compact!
     if movements.length > 0
       movements.reverse! if rand() < 0.5
