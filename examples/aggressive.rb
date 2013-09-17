@@ -10,7 +10,6 @@ module Aggressive
     movements << ((ns < 0) ? 'n' : 's') unless ns == 0
     if movements.length > 0
       movements.reverse! if rand() < 0.5
-      puts "movements #{movements.join}"
       return first_possible_move movements.join
     end
     nil
@@ -52,10 +51,8 @@ module Aggressive
         return fire_at! enemy
       end
     end
-    puts 'no enemy to be seen'
     return rest unless robot.ammo > 0
     r = move_to_center
-    puts "move to center ", r
     return r || hunt
   end
 end
