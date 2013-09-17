@@ -5,27 +5,28 @@ module Aggressive
     target_x = (@battle.board.width - 1)/2 
     target_y = (@battle.board.height - 1)/2
 
-    moves = ''
+    moves = []
     moves << case (target_y <=> y)
              when -1
-               "s"
+               SOUTH
              when 1
-               "n"
+               NORTH
              else
-               ''
+               nil
              end
     moves << case (target_x <=> x)
-             when -1
-               "e"
              when 1
-               "w"
+               EAST
+             when -1
+               WEST
              else
-               ''
+               nil
              end
+    moves.compact!
     if moves.length > 0
       moves.reverse if rand() < 0.5
-      puts "try move to center ", moves
-      return first_possible_move moves
+      puts "MOVE #{moves.first}"
+      return move moves.first
     end
     nil
   end
