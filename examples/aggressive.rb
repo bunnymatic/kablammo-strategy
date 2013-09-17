@@ -5,9 +5,6 @@ module Aggressive
     target_x = (@battle.board.width - 1)/2 
     target_y = (@battle.board.height - 1)/2
 
-    puts "(%f, %f) => (%f, %f)" % [x,y,target_x, target_y]
-    return first_possible_move 'n'
-
     moves = ''
     moves << case (target_y <=> y)
              when -1
@@ -27,7 +24,7 @@ module Aggressive
              end
     if moves.length > 0
       moves.reverse if rand() < 0.5
-      puts "moving ", moves
+      puts "try move to center ", moves
       return first_possible_move moves
     end
     nil
@@ -71,6 +68,10 @@ module Aggressive
     end
     puts 'no enemy to be seen'
     return rest unless robot.ammo > 0
-    move_to_center || hunt
+    if move_to_center
+      puts "move to center"
+    else
+      hunt
+    end
   end
 end
