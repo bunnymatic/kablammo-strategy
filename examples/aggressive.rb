@@ -28,11 +28,11 @@ module Aggressive
     enemy = opponents.first
     return hunt unless enemy
     return rest if my.ammo == 0
-    if rand() < 0.3
+    if rand() < 0.4
       move_towards! enemy
     else
       return aim_at! enemy unless aiming_at? enemy
-      return fire_at! enemy, 0.75 if can_fire_at? enemy
+      return fire_at! enemy, 0.25 if can_fire_at? enemy
     end
   end
 end
