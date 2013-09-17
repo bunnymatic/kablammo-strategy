@@ -22,7 +22,7 @@ module Aggressive
              else
                nil
              end
-    if moves.compact.present?
+    if moves.present?
       first_possible_move moves
     else
       nil
