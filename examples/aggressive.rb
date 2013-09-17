@@ -8,26 +8,25 @@ module Aggressive
     moves = ''
     moves << case (target_y <=> y)
              when -1
-               "s"
-             when 1
                "n"
+             when 1
+               "s"
              else
                ''
              end
     moves << case (target_x <=> x)
              when -1
-               "w"
-             when 1
                "e"
+             when 1
+               "w"
              else
                ''
              end
     if moves.present?
       puts "moving ", moves
-      first_possible_move moves
-    else
-      nil
+      return first_possible_move moves
     end
+    nil
   end
 
   def hunt
@@ -61,12 +60,15 @@ module Aggressive
 
     if enemy
       if !(aiming_at? enemy)
+        puts 'aim'
         return aim_at! enemy
       end
       if can_fire_at? enemy
+        puts 'fire'
         return fire_at! enemy
       end
     end
-    hunt unless move_to_center
+    puts 'no enemy to be seen'
+    move_to_center || hunt
   end
 end
