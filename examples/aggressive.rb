@@ -42,17 +42,20 @@ module Aggressive
 
     enemy = opponents.first
     return rest if my.ammo == 0
-
-    if enemy
-      if !(aiming_at? enemy)
-        return aim_at! enemy
+    begin
+      if enemy
+        if !(aiming_at? enemy)
+          return aim_at! enemy
+        end
+        if can_fire_at? enemy
+          return fire_at! enemy
+        end
       end
-      if can_fire_at? enemy
-        return fire_at! enemy
-      end
+      return rest unless robot.ammo > 0
+      r = move_to_center
+      return r || hunt
+    rescue
+      hunt
     end
-    return rest unless robot.ammo > 0
-    r = move_to_center
-    return r || hunt
   end
 end
