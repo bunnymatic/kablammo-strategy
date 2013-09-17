@@ -6,12 +6,11 @@ module Aggressive
     ns = (@battle.board.height - 1)/2 - y
 
     movements = []
-    (movements << (ew < 0) ? 'move_east!' : 'move_west!') unless ew == 0
-    (movements << (ns < 0) ? 'move_north!' : 'move_south!') unless ns == 0
+    movements << ((ew < 0) ? 'move_east!' : 'move_west!') unless ew == 0
+    movements << ((ns < 0) ? 'move_north!' : 'move_south!') unless ns == 0
     movements.compact!
     if movements.length > 0
-      movements.reverse if rand() < 0.5
-      puts "MOVE #{movements.first}"
+      movements.reverse! if rand() < 0.5
       return send(movements.first)
     end
     nil
