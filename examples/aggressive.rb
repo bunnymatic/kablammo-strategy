@@ -7,7 +7,7 @@ module Aggressive
 
     movements = []
     movements << ((ew < 0) ? 'w' : 'e') unless ew == 0
-    movements << ((ns < 0) ? 'n' : 's') unless ns == 0
+    movements << ((ns < 0) ? 's' : 'n') unless ns == 0
     if movements.length > 0
       movements.reverse! if rand() < 0.5
       puts "move to center ", movements
