@@ -6,8 +6,8 @@ module Aggressive
     ns = ((@battle.board.height - 1)/2 - y).to_i
 
     movements = []
-    movements << ((ew < 0) ? 'e' : 'w') unless ew == 0
-    movements << ((ns < 0) ? 's' : 'n') unless ns == 0
+    movements << ((ew < 0) ? 'w' : 'e') unless ew == 0
+    movements << ((ns < 0) ? 'n' : 's') unless ns == 0
     movements.compact!
     if movements.length > 0
       movements.reverse! if rand() < 0.5
