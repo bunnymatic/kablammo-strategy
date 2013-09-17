@@ -54,10 +54,8 @@ module Aggressive
     end
     puts 'no enemy to be seen'
     return rest unless robot.ammo > 0
-    if move_to_center
-      puts "move to center"
-    else
-      hunt
-    end
+    r = move_to_center
+    puts "move to center ", r
+    return r || hunt
   end
 end
