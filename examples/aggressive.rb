@@ -8,11 +8,10 @@ module Aggressive
     movements = []
     movements << ((ew < 0) ? 'w' : 'e') unless ew == 0
     movements << ((ns < 0) ? 'n' : 's') unless ns == 0
-    movements.compact!
     if movements.length > 0
       movements.reverse! if rand() < 0.5
-      puts "movements #{movements}"
-      return first_possible_move movements.first
+      puts "movements #{movements.join}"
+      return first_possible_move movements.join
     end
     nil
   end
