@@ -26,13 +26,13 @@ module Aggressive
     #return move_towards! power_up if power_up
 
     enemy = opponents.first
-    return hunt unless enemy
     return rest if my.ammo == 0
-    if rand() < 0.4
-      move_towards! enemy
+    if rand() < 0.7 && enemy
+      return move_towards! enemy
     else
       return aim_at! enemy unless aiming_at? enemy
       return fire_at! enemy, 0.25 if can_fire_at? enemy
     end
+    hunt
   end
 end
