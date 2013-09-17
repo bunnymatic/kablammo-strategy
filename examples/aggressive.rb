@@ -1,34 +1,18 @@
 module Aggressive
 
-  include Constants
-
   def move_to_center
     x, y = robot.x, robot.y
-    target_x = (@battle.board.width - 1)/2 
-    target_y = (@battle.board.height - 1)/2
+    ew = (@battle.board.width - 1)/2 - x
+    ns = (@battle.board.height - 1)/2 - y
 
-    moves = []
-    moves << case (target_y <=> y)
-             when -1
-               SOUTH
-             when 1
-               NORTH
-             else
-               nil
-             end
-    moves << case (target_x <=> x)
-             when 1
-               EAST
-             when -1
-               WEST
-             else
-               nil
-             end
-    moves.compact!
-    if moves.length > 0
-      moves.reverse if rand() < 0.5
-      puts "MOVE #{moves.first}"
-      return move moves.first
+    methods = []
+    methods << (ew < 0) ? 'move_east!' : 'move_west!' unless ew == 0
+    methods << (ns < 0) ? 'move_north!' : 'move_south!' unless ns == 0
+    methods.compact!
+    if methods.length > 0
+      methods.reverse if rand() < 0.5
+      puts "MOVE #{methods.first}"
+      return send methods.first
     end
     nil
   end
