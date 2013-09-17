@@ -10,6 +10,7 @@ module Aggressive
     movements << ((ns < 0) ? 'n' : 's') unless ns == 0
     if movements.length > 0
       movements.reverse! if rand() < 0.5
+      puts "move to center ", movements
       return first_possible_move movements.join
     end
     nil
