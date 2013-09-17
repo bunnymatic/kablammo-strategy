@@ -23,6 +23,7 @@ module Aggressive
                ''
              end
     if moves.present?
+      puts "moving ", moves
       first_possible_move moves
     else
       nil
