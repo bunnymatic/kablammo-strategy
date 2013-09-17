@@ -5,6 +5,8 @@ module Aggressive
     target_x = (@battle.board.height - 1)/2
     target_y = (@battle.board.width - 1)/2
 
+
+    puts "(%f, %f) => (%f, %f)" % [x,y,target_x, target_y]
     moves = ''
     moves << case (target_y <=> y)
              when -1
@@ -23,8 +25,8 @@ module Aggressive
                ''
              end
     if moves.present?
+      moves.reverse if rand() < 0.5
       puts "moving ", moves
-      moves.reverse if rand() < 0.5 
       return first_possible_move moves
     end
     nil
