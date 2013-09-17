@@ -54,7 +54,8 @@ module Aggressive
       return rest unless robot.ammo > 0
       r = move_to_center
       return r || hunt
-    rescue
+    rescue Exception => ex
+      puts "Caught exception", ex
       hunt
     end
   end
