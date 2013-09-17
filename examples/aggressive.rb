@@ -1,5 +1,7 @@
 module Aggressive
 
+  include Constants
+
   def move_to_center
     x, y = robot.x, robot.y
     target_x = (@battle.board.width - 1)/2 
