@@ -12,7 +12,7 @@ module Aggressive
              when 1
                "n"
              else
-               nil
+               ''
              end
     moves << case (target_x <=> x)
              when -1
@@ -20,7 +20,7 @@ module Aggressive
              when 1
                "e"
              else
-               nil
+               ''
              end
     if moves.present?
       first_possible_move moves
@@ -58,11 +58,11 @@ module Aggressive
     enemy = opponents.first
     return rest if my.ammo == 0
 
-    if enemy 
+    if enemy
       if !(aiming_at? enemy)
         return aim_at! enemy
       end
-      if can_fire_at? enemy 
+      if can_fire_at? enemy
         return fire_at! enemy
       end
     end
