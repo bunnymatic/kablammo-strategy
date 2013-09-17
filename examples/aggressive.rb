@@ -2,8 +2,8 @@ module Aggressive
 
   def move_to_center
     x, y = robot.x, robot.y
-    target_x = @battle.board.height - 1
-    target_y = @battle.board.width - 1
+    center_x = (@battle.board.height - 1)/2
+    center_y = (@battle.board.width - 1)/2
 
     moves = ''
     moves << case (target_y <=> y)
@@ -24,6 +24,7 @@ module Aggressive
              end
     if moves.present?
       puts "moving ", moves
+      moves.reverse if rand() < 0.5 
       return first_possible_move moves
     end
     nil
