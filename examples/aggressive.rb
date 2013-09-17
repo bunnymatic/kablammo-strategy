@@ -2,15 +2,17 @@ module Aggressive
 
   def move_to_center
     x, y = robot.x, robot.y
-    ew = (@battle.board.width - 1)/2 - x
-    ns = (@battle.board.height - 1)/2 - y
+    ew = ((@battle.board.width - 1)/2 - x).to_i
+    ns = ((@battle.board.height - 1)/2 - y).to_i
 
+    puts ns, ew
     movements = []
     movements << ((ew < 0) ? 'move_east!' : 'move_west!') unless ew == 0
     movements << ((ns < 0) ? 'move_north!' : 'move_south!') unless ns == 0
     movements.compact!
     if movements.length > 0
       movements.reverse! if rand() < 0.5
+      puts "movements #{movements}"
       return send(movements.first)
     end
     nil
